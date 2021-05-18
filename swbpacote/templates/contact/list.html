@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block content %}
+      <h1>Lista de contatos</h1>
+      <table class='table'>
+          <thead>
+              <th scope="col">Nome</th>
+          </thead>
+          <tbody>
+              {% for contact in contacts%}
+              <tr>
+                  <td>{{ contact }}</td>
+                </tr>
+            {% endfor%}
+          </tbody>
+        </table>
+{% endblock %}

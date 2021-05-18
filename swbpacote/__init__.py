@@ -1,8 +1,11 @@
 from flask import Flask, app
+from flask_bootstrap import Bootstrap
 
 def creat_app():
     app = Flask(__name__)
-
+    app.config['SECRET_KEY'] = 'UmaChaveQualquer'
+    Bootstrap(app)
+    
     regiter_blueprints(app)
     
     return app

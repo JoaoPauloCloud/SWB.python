@@ -1,10 +1,16 @@
 from flask import Flask, app
 from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
 
-def creat_app():
+db = SQLAlchemy()
+
+def create_app():
     app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///biblioteca.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'UmaChaveQualquer'
     Bootstrap(app)
+    db.init_app(app)
     
     regiter_blueprints(app)
     

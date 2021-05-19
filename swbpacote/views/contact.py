@@ -1,15 +1,19 @@
 from flask.templating import render_template_string
 from flask.views import MethodView
 from flask import render_template
-from flask_wtf import FlaskForm, form
+
+from flask_wtf import FlaskForm
 from flask_wtf.recaptcha import validators
 from wtforms.fields.core import StringField
 from wtforms.validators import DataRequired
 
+from swbpacote.models.model import ContactModel
+
 
 class ContactView(MethodView):
     def get(self):
-        contacts = ['Paulo', 'Paloma', 'João Paulo', 'Maria de Lourdes']
+        contacts = ContactModel.query.order_by(ContactModel.name).all()
+        
         return render_template('contact/list.html', contacts=contacts)
 
 class ContactNew(MethodView):

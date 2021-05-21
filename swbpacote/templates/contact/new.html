@@ -2,10 +2,5 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
-<form method="POST" action="/">
-    {{ wtf.quick_form(form)}}
-    <input class="btn-primary" type="submit" value="Salvar" />
-
-</form>
-
+      {{wtf.quick_form(form, button_map={'btn_save':'primary'})}}
 {% endblock %}

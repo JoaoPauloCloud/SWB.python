@@ -1,17 +1,27 @@
 {% extends 'base.html'%}
 
 {% block content %}
-      <h1>Lista de contatos</h1>
-      <table class='table'>
-          <thead>
-              <th scope="col">Nome</th>
-          </thead>
-          <tbody>
-              {% for contact in contacts%}
-              <tr>
-                  <td>{{ contact }}</td>
-                </tr>
-            {% endfor%}
-          </tbody>
-        </table>
+<h1>Lista de contatos</h1>
+<table class='table'>
+  <thead>
+    <th scope="col">Nome</th>
+  </thead>
+  <tbody>
+    {% for contact in contacts %}
+    <tr>
+      <td>{{ contact.id }}</td>
+      <td>{{ contact.name }}</td>
+      <td>
+        <form action="{{ url_for('contacts.list', id=contact.id) }}" method="POST">
+          <input class="btn btn-primary" type="submit" value="Excluir"
+            onclick="return confirm('Tem certeza que deseja excluir esse contato?');" />
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<form action="{{url_for('contacts.new')}}" method="GET">
+  <input class="btn btn-primary" type="submit" value="Novo" />
+</form>
 {% endblock %}

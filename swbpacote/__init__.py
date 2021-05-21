@@ -6,6 +6,9 @@ db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
+
+    app.config['ENV'] = 'development'
+    app.config['DEBUG'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///biblioteca.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'UmaChaveQualquer'

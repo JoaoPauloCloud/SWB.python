@@ -1,4 +1,5 @@
 antiorm==1.2.1
+autopep8==1.5.7
 click==8.0.0
 colorama==0.4.4
 db==0.1.1
@@ -13,7 +14,9 @@ greenlet==1.1.0
 itsdangerous==2.0.1
 Jinja2==3.0.0
 MarkupSafe==2.0.0
+pycodestyle==2.7.0
 SQLAlchemy==1.4.15
+toml==0.10.2
 visitor==0.1.3
 Werkzeug==2.0.1
 WTForms==2.3.3

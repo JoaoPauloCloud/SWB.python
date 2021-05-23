@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% block title %} Clientes {% endblock%}
+
+
+{% block content %}
+<h1>Lista de Clientes</h1>
+
+
+<style>
+  .container {
+    height: 250px;
+    overflow-y: scroll;
+    background: blanchedalmond;
+  }
+</style>
+<div class="container">
+
+  <table class='table' border="3">
+    <tbody>
+      
+        <td width="5%">ID</td>
+        <td width="10%">Nome</td>
+      <tr>  
+        {% for cliente in clientes %}
+
+        <td width="5%">{{ cliente.id }}</td>
+        <td width="10%">{{ cliente.name }}</td>
+        <td>
+          <form action="{{ url_for('clientes.list', id=cliente.id) }}" method="POST">
+            <input class="btn btn-primary" type="submit" value="Excluir"
+              onclick="return confirm('Tem certeza que deseja excluir esse Cliente?');" />
+          </form>
+        </td>
+        <td>
+          <form action="{{url_for('clientes.info')}}" method="GET">
+            <input class="btn btn-primary" type="submit" value="Informações" />
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<form action="{{url_for('clientes.new')}}" method="GET">
+  <input class="btn btn-primary" type="submit" value="Novo Cliente" />
+</form>
+{% endblock %}

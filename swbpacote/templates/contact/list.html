@@ -1,26 +1,41 @@
 {% extends 'base.html'%}
+{% block title %}Contatosjp{% endblock%}
+
 
 {% block content %}
+
 <h1>Lista de contatos</h1>
-<table class='table'>
-  <thead>
-    <th scope="col">Nome</th>
-  </thead>
-  <tbody>
-    {% for contact in contacts %}
-    <tr>
-      <td>{{ contact.id }}</td>
-      <td>{{ contact.name }}</td>
-      <td>
-        <form action="{{ url_for('contacts.list', id=contact.id) }}" method="POST">
-          <input class="btn btn-primary" type="submit" value="Excluir"
-            onclick="return confirm('Tem certeza que deseja excluir esse contato?');" />
-        </form>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+
+<style>
+  .container {
+    height: 250px;
+    overflow-y: scroll;
+    background: blanchedalmond;
+  }
+</style>
+<div class="container">
+
+  <table class='table' border="3">
+    <tbody>
+
+      <td width="5%">ID</td>
+      <td width="10%">Nome</td>
+      <tr>
+        {% for contact in contacts %}
+
+        <td width="5%">{{ contact.id }}</td>
+        <td width="10%">{{ contact.telefone }}</td>
+        <td>
+          <form action="{{ url_for('contacts.list', id=contact.id) }}" method="POST">
+            <input class="btn btn-primary" type="submit" value="Excluir"
+              onclick="return confirm('Tem certeza que deseja excluir esse contato?');" />
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 <form action="{{url_for('contacts.new')}}" method="GET">
   <input class="btn btn-primary" type="submit" value="Novo" />
 </form>

@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% block title %} Livros {% endblock%}
+
+
+{% block content %}
+
+<h1>Lista de Livros</h1>
+<style>
+  .container {
+    height: 250px;
+    overflow-y: scroll;
+    background: blanchedalmond;
+  }
+</style>
+<div class="container">
+
+  <table class='table' border="3">
+    <tbody>
+
+      <td width="5%">ID</td>
+      <td width="10%">Nome</td>
+      <tr>
+        {% for livro in livros %}
+
+        <td width="5%">{{ livro.id }}</td>
+        <td width="10%">{{ livro.name }}</td>
+        <td width="10%">{{ livro.quantidade }}</td>
+        <td>
+          <form action="{{ url_for('livros.list', id=livro.id) }}" method="POST">
+            <input class="btn btn-primary" type="submit" value="Excluir"
+              onclick="return confirm('Tem certeza que deseja excluir esse livro?');" />
+          </form>
+        </td>
+        <td>
+          <form action="{{url_for('livros.info')}}" method="GET">
+            <input class="btn btn-primary" type="submit" value="Informações" ; />
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<form action="{{url_for('livros.new')}}" method="GET">
+  <input class="btn btn-primary" type="submit" value="Novo livro" />
+</form>
+{% endblock %}

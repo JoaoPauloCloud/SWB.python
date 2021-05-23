@@ -21,5 +21,12 @@ def create_app():
 
 def regiter_blueprints(app):
     from swbpacote.url import bp_contact
+    from swbpacote.url import bp_cliente
+    from swbpacote.url import bp_livro
+    from swbpacote.url import bp_inicial
 
     app.register_blueprint(bp_contact)
+    app.register_blueprint(bp_cliente)
+    app.register_blueprint(bp_livro)
+    app.register_blueprint(bp_inicial)
+

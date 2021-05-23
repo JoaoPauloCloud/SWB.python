@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block title %} Informações {% endblock%}
+
+{% block content %}
+
+<h1>Dados do Cliente</h1>
+
+
+<h1>Lista de contatos</h1>
+<form action="{{url_for('contacts.new')}}" method="GET">
+      <input class="btn btn-primary" type="submit" value="Novo Telefone" />
+</form>
+
+
+{% endblock%}
